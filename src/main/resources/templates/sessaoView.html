@@ -1,0 +1,23 @@
+<div class="panel">
+  {#if error}<div class="alert alert-danger">{error}</div>{/if}
+  <div class="panel panel-default">
+      <div class="form-panel">
+        <h3>{sessao.nome}</h3>
+        <div class="form-group">
+            Id Pauta: {sessao.idpauta}
+        </div>
+        <div class="form-group">
+            Duração: {sessao.duracao}
+        </div>
+        <div class="form-group">
+            Data Início Sessão: <span class="date">{sessao.dataInicioSessao}</span>
+        </div>
+        <div class="form-group">
+            Data Fim Sessão: <span class="date">{sessao.dataFimSessao}</span>
+        </div>
+        <div class="form-group">
+            Status: {sessao.status.descricao}
+        </div>
+      </div>
+  </div>
+</div>

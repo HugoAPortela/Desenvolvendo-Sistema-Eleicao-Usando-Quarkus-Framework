@@ -1,0 +1,45 @@
+<div class="panel">
+  <h3>{#if update}Editar Sessão #{sessao.id}{#else}Adicionar Sessão{/if}</h3>
+  {#if error}<div class="alert alert-danger">{error}</div>{/if}
+  <div id="msg"></div>
+  <div class="panel panel-default">
+    <form method="POST" name="sessaoForm" id="sessaoForm" enctype="multipart/form-data">
+      <div class="form-panel">
+        <div class="form-group">
+            <label class="sr-only" for="nome">Nome</label>
+            <input type="text" name="nome" class="form-control" id="nome" placeholder="Nome da Sessão" required="true" autofocus {#if update}value="{sessao.nome}"{/if}>
+        </div>
+        <div class="form-group">
+            <label class="sr-only" for="duracao">Duração</label>
+            <input type="number" name="duracao" class="form-control" id="duracao" placeholder="Duração em Minutos" required="true" autofocus {#if update}value="{sessao.duracao}"{/if}>
+        </div>
+        <div class="form-group">
+            <label class="sr-only" for="dataInicioSessao">Data Inicio</label>
+            <input type="date" name="dataInicioSessao" class="form-control" id="dataInicioSessao" placeholder="Data Inicio" required="true" autofocus {#if update}value="{sessao.dataInicioSessao}"{/if}>
+        </div>
+        <div class="form-group">
+            <label class="sr-only" for="dataFimSessao">Data Fim</label>
+            <input type="date" name="dataFimSessao" class="form-control" id="dataFimSessao" placeholder="Data Fim" required="true" autofocus {#if update}value="{sessao.dataFimSessao}"{/if}>
+        </div>
+        <div class="form-group">
+	        <select class="custom-select" name="idpauta" id="idpauta" {#if update}disabled{/if}>
+            <option disabled value="">Pautas</option>
+            {#if pautas}
+              {#for pt in pautas}
+              <option value="{pt.id}" {#if sessao.idpauta == pt.id}selected{/if}>{pt.titulo}</option>
+              {/for}
+            {/if}
+	        </select>
+        </div>
+        <div class="form-group">
+	        <select class="custom-select" name="status" id="status">
+	          <option disabled value="">Status</option>
+	          {#for st in status}
+	          <option value="{st}" {#if sessao.status == st}selected{/if}>{st.descricao}</option>
+	          {/for}
+	        </select>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
